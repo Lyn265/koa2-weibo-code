@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>EJS Welcome to <%= title %></p>
+    <div>
+      <% if(isMe) {%>
+          <a href="#">www.baidu.com</a>
+        <% } else {%> 
+          <a href="#">关注点赞</a>
+          <% } %> 
+    </div>
+    <div>
+      <%- include('widgets/blog-list',{
+        blogList
+      })%>
+    </div>
+  </body>
+</html>
