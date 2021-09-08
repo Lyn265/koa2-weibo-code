@@ -9,6 +9,7 @@ const session = require('koa-generic-session')
 const redisStore = require('koa-redis')
 const {REDIS_CONF} = require('./conf/db')
 const index = require('./routes/index')
+const userAPIRouter = require('./routes/api/user')
 const userViewRouter = require('./routes/view/user')
 const errorViewRouter = require('./routes/view/error')
 const {isProd} = require('./utils/env')
@@ -58,6 +59,7 @@ app.use(session({
 
 // routes
 app.use(index.routes(), index.allowedMethods())
+app.use(userAPIRouter.routes(),userAPIRouter.allowedMethods())
 app.use(userViewRouter.routes(),userViewRouter.allowedMethods())
 app.use(errorViewRouter.routes(),errorViewRouter.allowedMethods()) //404最下面
 
