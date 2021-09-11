@@ -13,6 +13,7 @@ const userAPIRouter = require('./routes/api/user')
 const userViewRouter = require('./routes/view/user')
 const errorViewRouter = require('./routes/view/error')
 const {isProd} = require('./utils/env')
+const {SESSION_SECRET_KEY} = require('./conf/secretKeys')
 // error handler
 let errorConf = {}
 if(isProd){
@@ -35,7 +36,7 @@ app.use(views(__dirname + '/views', {
 }))
 
 //session配置
-app.keys = ['keykeys']
+app.keys = [SESSION_SECRET_KEY]
 app.use(session({
     key:'weibo:sid',  //cookie name 默认是koa.sid
     prefix:'weibo:sess:', //redis key的前缀 默认是'koa:sess:'

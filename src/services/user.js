@@ -4,6 +4,7 @@
 
 const {User} = require('../db/model/index')
 const {formatUser} = require('./format')
+const{doCrypto} = require('../utils/crypto')
 
 const getUserInfo = async (userName,password) =>{
     const whereOpt = {
@@ -24,6 +25,17 @@ const getUserInfo = async (userName,password) =>{
     return formatRes
 }
 
+const createUser = async({userName,password,gender=3,nickName}) =>{
+    const result = await User.create({
+        userName,
+        password:doCrypto(password),
+        gender,
+        nickName:nickName ? nickName:userName
+    })
+    return result.dataValues
+}
+
 module.exports={
-    getUserInfo
+    getUserInfo,
+    createUser
 }
