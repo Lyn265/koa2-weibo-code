@@ -36,6 +36,7 @@
                         return
                     }
                     // 跳转到指定 url 或首页
+                    alert('登录成功')
                     var redirectUrl = $.query.get('url') || '/'
                     location.href = redirectUrl
                 })
