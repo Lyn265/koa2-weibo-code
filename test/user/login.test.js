@@ -1,0 +1,73 @@
+/**
+ * @description 登录单元测试
+ * 
+ */
+
+const server = require('../server')
+
+const userName = `u_${Date.now()}`
+const password = `p_${Date.now()}`
+const testUser = {
+  userName,
+  password,
+  nickName:userName,
+  gender:1
+}
+
+//存储cookie
+let COOKIE = ''
+//注册
+test('测试注册用户，成功',async() =>{
+  const res = await server.post('/api/user/register')
+  .send(testUser)
+  expect(res.body.errno).toBe(0)
+})
+//重复注册
+test('测试注册用户，成功',async() =>{
+  const res = await server.post('/api/user/register')
+  .send(testUser)
+  expect(res.body.errno).not.toBe(0)
+})
+//查询用户是否存在
+test('查询已注册的用户，应该存在',async() =>{
+  const res = await server.post('/api/user/isExist')
+  .send(
+    {userName}
+  )
+  expect(res.body.errno).toBe(0)
+})
+//json schema 验证 非法格式 应该失败
+test('非法格式注册',async() =>{
+  const res = await server.post('/api/user/register')
+  .send({
+    userName:'12345',//应该字母开头
+    password:'asdfg',
+    gender:'mail' //不是数字
+  })
+  expect(res.body.errno).not.toBe(0)
+})
+//登录
+test('已注册账号登录测试，成功',async() =>{
+  const res = await server.post('/api/user/login')
+  .send({
+    userName,
+    password
+  })
+  expect(res.body.errno).toBe(0)
+  //获取cooke
+  COOKIE = res.headers['set-cookie'].join(';')
+})
+//删除用户
+test('删除用户应该成功',async() =>{
+  const res = await server.post('/api/user/delete')
+  .set('cookie',COOKIE)
+  expect(res.body.errno).toBe(0)
+})
+//再次查询用户是否存在
+test('查询已注册的用户，应该存在',async() =>{
+  const res = await server.post('/api/user/isExist')
+  .send(
+    {userName}
+  )
+  expect(res.body.errno).not.toBe(0)
+})

@@ -34,8 +34,17 @@ const createUser = async({userName,password,gender=3,nickName}) =>{
     })
     return result.dataValues
 }
+const delCurUser = async(userName) =>{
+    const data = await User.destroy({
+        where :{
+            userName
+        }
+    })
+    return data > 0
+}
 
 module.exports={
     getUserInfo,
-    createUser
+    createUser,
+    delCurUser
 }
