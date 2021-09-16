@@ -57,6 +57,26 @@ test('已注册账号登录测试，成功',async() =>{
   //获取cooke
   COOKIE = res.headers['set-cookie'].join(';')
 })
+test('修改基本信息应该成功',async() =>{
+  const res = await server.patch('/api/user/changeInfo')
+  .set('cookie',COOKIE)
+  .send({
+        nickName:'测试昵称',
+        city:'测试城市',
+        picture:'/test.png'
+  })
+  expect(res.body.errno).toBe(0)
+})
+test('修改密码应该成功',async() =>{
+  const res = await server.patch('/api/user/changePassword')
+  .set('cookie',COOKIE)
+  .send({
+    userName,
+    password,
+    newPassword:`p_${Date.now()}`
+  })
+  expect(res.body.errno).toBe(0)
+})
 //删除用户
 test('删除用户应该成功',async() =>{
   const res = await server.post('/api/user/delete')
@@ -70,4 +90,9 @@ test('查询已注册的用户，应该存在',async() =>{
     {userName}
   )
   expect(res.body.errno).not.toBe(0)
+})
+test('退出登录',async() =>{
+  const res = await server.post('/api/user/logout')
+    .set('cookie',COOKIE)
+    expect(res.body.errno).toBe(0)
 })

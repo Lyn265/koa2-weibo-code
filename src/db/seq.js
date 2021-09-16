@@ -8,7 +8,8 @@ const {isProd,isTest} = require('../utils/env')
 
 const conf = {
     host:host,
-    dialect:'mysql'
+    dialect:'mysql',
+    timezone: '+09:00'
 }
 if(isTest){
     conf.logging = () =>{}

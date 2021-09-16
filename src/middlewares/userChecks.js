@@ -1,6 +1,5 @@
 const { ErrorModel } = require('../model/ResModel')
 const {loginCheckFailInfo} = require('../model/ErrorInfo')
-const { ne } = require('sequelize/types/lib/operators')
 /**
  * @description API登录验证
  * @param {*} ctx 

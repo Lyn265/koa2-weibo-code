@@ -1,10 +1,10 @@
 /**
  * @description 数据格式化
  */
-
+const { DEFAULT_PICTURE } = require('../conf/contant')
 function _formatUserPicture(obj){
     if(obj.picture == null){
-        obj.picture = ''
+        obj.picture = DEFAULT_PICTURE
     }
     return obj
 }

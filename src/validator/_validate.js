@@ -6,10 +6,10 @@ const Ajv = require('ajv')
 const ajv = new Ajv()
 
 function validate(schema,data={}){
-    const validate  = ajv.compile(schema)
-    const valid = validate(data)
+    const _validate  = ajv.compile(schema)
+    const valid = _validate(data)
     if(!valid){
-        return validate.errors[0] 
+        return _validate.errors[0] 
     }
 }
 
