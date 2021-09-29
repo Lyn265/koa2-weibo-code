@@ -39,7 +39,7 @@
     "jest": "^24.9.0",
     "nodemon": "^1.19.1",
     "pre-commit": "^1.2.2",
-    "supertest": "^6.1.6"
+    "supertest": "^4.0.2"
   },
   "pre-commit": [
     "lint"

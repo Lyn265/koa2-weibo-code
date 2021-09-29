@@ -3,5 +3,6 @@
  */
 
 module.exports = {
-  COOKIE:'weibo:sid=geS7OKWSFdv5I6eKgjB-bJTGPCM_wnTL; weibo:sid.sig=vAklWWhr4CwdIdWkJy6F_QAymOc'
+  USER_NAME:'zhangsan',
+  COOKIE:'weibo:sid=pf1rNoUlHm7uyoDvjR7InJos6P6OUgAb; weibo:sid.sig=4SWN4MegQppfmSzXBGzqbdCMZqw'
 }
