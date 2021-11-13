@@ -1,8 +1,7 @@
-const {User} = require('../../src/db/model/index')
 /**
  * @description 用户模型测试
  */
-
+ const {User} = require('../../src/db/model/index')
 test('User 各个模型的属性，是否符合预期',() =>{
   //build会构建一个内存的User 实例，但不会存进数据库
   const user = User.build({

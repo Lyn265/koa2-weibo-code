@@ -15,7 +15,7 @@ const testUser = {
 }
 
 //存储cookie
-let COOKIE = ''
+let COOKIE = 'weibo:sid=RBRwVUP50ZidJ-ByE51gX_oGyk80delY; weibo:sid.sig=HoekC3gVg-AsEjyMUQ9LEKxNQMA'
 //注册
 test('测试注册用户，成功',async() =>{
   const res = await server.post('/api/user/register')

@@ -51,7 +51,9 @@ app.use(session({
         maxAge:24 * 60 * 60 * 1000  //毫秒
     },
     store:redisStore({
-        all:`${REDIS_CONF.host}:${REDIS_CONF.port}`
+        host:REDIS_CONF.host,
+        port:REDIS_CONF.port,
+        password:REDIS_CONF.password
     })
 }))
 
