@@ -4,5 +4,5 @@
 
 module.exports = {
   USER_NAME:'zhangsan',
-  COOKIE:'weibo:sid=pf1rNoUlHm7uyoDvjR7InJos6P6OUgAb; weibo:sid.sig=4SWN4MegQppfmSzXBGzqbdCMZqw'
+  COOKIE:'weibo:sid=RBRwVUP50ZidJ-ByE51gX_oGyk80delY; weibo:sid.sig=HoekC3gVg-AsEjyMUQ9LEKxNQMA'
 }
